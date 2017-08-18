@@ -52,7 +52,7 @@ class LocationCell: UITableViewCell {
     // Add image to cell
     func thumbnail(for location: Location) -> UIImage {
         if location.hasPhoto, let image = location.photoImage {
-            return image
+            return image.resizedImage(withBounds: CGSize(width: 52, height: 52))
         }
         return UIImage()
     }
