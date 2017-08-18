@@ -30,13 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let locationsViewController = navigationController.viewControllers[0] as! LocationsViewController
             locationsViewController.managedObjectContext = managedObjectContext
             
-            
+            // MapViewController ManagedObject Context
+            let mapViewController = tabBarViewControllers[2] as! MapViewController
+            mapViewController.managedObjectContext = managedObjectContext
+  
         }
-        
-        
-        
 
-        
         print(applicationDocumentsDirectory)
         
         // Core Data Error listener
