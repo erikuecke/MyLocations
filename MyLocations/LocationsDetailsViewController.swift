@@ -33,10 +33,12 @@ class LocationDetailsViewController: UITableViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var addPhotoLabel: UILabel!
     
-    var image: UIImage?
+    
     
     var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     var placemark: CLPlacemark?
+    var image: UIImage?
+    var observer: Any!
     
     var categoryName = "No Category"
     
@@ -65,6 +67,7 @@ class LocationDetailsViewController: UITableViewController {
         
         if let location = locationToEdit {
             title = "Edit Location"
+            
         }
         
         descriptionTextView.text = descriptionText
@@ -83,7 +86,7 @@ class LocationDetailsViewController: UITableViewController {
         gestureRecognizer.cancelsTouchesInView = false
         tableView.addGestureRecognizer(gestureRecognizer)
         
-
+        listenForBackgroundNotification()
     }
     
     // Hide Keyboard method
@@ -223,6 +226,25 @@ class LocationDetailsViewController: UITableViewController {
         addPhotoLabel.isHidden = true
     }
 
+    // Listen for background notification
+    func listenForBackgroundNotification() {
+        observer = NotificationCenter.default.addObserver( forName: Notification.Name.UIApplicationDidEnterBackground, object: nil, queue: OperationQueue.main) { [weak self] _ in
+            
+            if let strongSelf = self {
+                if strongSelf.presentedViewController != nil {
+                    strongSelf.dismiss(animated: false, completion: nil)
+                }
+                strongSelf.descriptionTextView.resignFirstResponder()
+            }
+        }
+    }
+    
+    // DeInit
+    deinit {
+        print("*** deinit \(self)")
+        NotificationCenter.default.removeObserver(observer)
+    }
+    
 }
 
 // MARK: UIIMAGEPICKER
