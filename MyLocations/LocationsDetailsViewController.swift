@@ -65,6 +65,21 @@ class LocationDetailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Tableview color setup
+        tableView.backgroundColor = UIColor.black
+        tableView.separatorColor = UIColor(white: 1.0, alpha: 0.2)
+        tableView.indicatorStyle = .white
+        
+        descriptionTextView.textColor = UIColor.white
+        descriptionTextView.backgroundColor = UIColor.black
+        
+        addPhotoLabel.textColor = UIColor.white
+        addPhotoLabel.highlightedTextColor = addPhotoLabel.textColor
+        addressLabel.textColor = UIColor(white: 1.0, alpha: 0.4)
+        addressLabel.highlightedTextColor = addressLabel.textColor
+        
+
+        
         if let location = locationToEdit {
             title = "Edit Location"
             if location.hasPhoto {
@@ -162,28 +177,16 @@ class LocationDetailsViewController: UITableViewController {
     
     // PlaceMark string method for address
     func string(from placemark: CLPlacemark) -> String {
-        var text = ""
-        if let s = placemark.subThoroughfare {
-            text += s + " "
-        }
-        if let s = placemark.thoroughfare {
-            text += s + ", "
-        }
-        if let s = placemark.locality {
-            text += s + ", "
-        }
-        if let s = placemark.administrativeArea {
-            text += s + " "
-        }
-        if let s = placemark.postalCode {
-            text += s + ", "
-        }
-        if let s = placemark.country {
-            text += s
-        }
-        return text
+        var line = ""
+        line.add(text: placemark.subThoroughfare)
+        line.add(text: placemark.thoroughfare, separatedBy: " ")
+        line.add(text: placemark.locality, separatedBy: ", ")
+        line.add(text: placemark.administrativeArea, separatedBy: ", ")
+        line.add(text: placemark.postalCode, separatedBy: " ")
+        line.add(text: placemark.country, separatedBy: ", ")
+        return line
     }
-    
+
     // Format date with dateFormatter object
     func format(date: Date) -> String {
         return dateFormatter.string(from: date)
@@ -223,6 +226,33 @@ class LocationDetailsViewController: UITableViewController {
         }
     }
     
+    // Customize static cells
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.black
+        if let textLabel = cell.textLabel {
+            textLabel.textColor = UIColor.white
+            textLabel.highlightedTextColor = textLabel.textColor
+        }
+        
+        if let detailLabel = cell.detailTextLabel {
+            detailLabel.textColor = UIColor(white: 1.0, alpha: 0.4)
+            detailLabel.highlightedTextColor = detailLabel.textColor
+        }
+        
+        let selectionView = UIView(frame: CGRect.zero)
+        selectionView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+        cell.selectedBackgroundView = selectionView
+        
+        if indexPath.row == 2 {
+            let addressLabel = cell.viewWithTag(100) as! UILabel
+            addressLabel.textColor = UIColor.white
+            addressLabel.highlightedTextColor = addressLabel.textColor
+        }
+
+    }
+    
+
+        
  
     
     // Prepare for Seguew to pick category
@@ -301,7 +331,8 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     
     // Photo from Camera
     func takePhotoWithCamera() {
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
+        imagePicker.view.tintColor = view.tintColor
         imagePicker.sourceType = .camera
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -310,7 +341,8 @@ extension LocationDetailsViewController: UIImagePickerControllerDelegate, UINavi
     
     // Photo from Library
     func choosePhotoFromLibrary() {
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
+        imagePicker.view.tintColor = view.tintColor
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true

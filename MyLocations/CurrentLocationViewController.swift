@@ -204,26 +204,21 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
     
     // Placemark string method
     func string(from placemark: CLPlacemark) -> String {
-        // 1
-        var line1 = ""
-        // 2 
-        if let s = placemark.subThoroughfare { line1 += s + " " }
-        // 3 
-        if let s = placemark.thoroughfare { line1 += s }
-        // 4 
-        var line2 = ""
-        if let s = placemark.locality {
-            line2 += s + " "
-        }
-        if let s = placemark.administrativeArea {
-            line2 += s + " "
-        }
-        if let s = placemark.postalCode {
-            line2 += s
-        }
-        // 5 
-        return line1 + "\n" + line2 }
         
+        var line1 = ""
+        line1.add(text: placemark.subThoroughfare)
+        line1.add(text: placemark.thoroughfare, separatedBy: " ")
+        
+        var line2 = ""
+        line2.add(text: placemark.locality)
+        line2.add(text: placemark.administrativeArea, separatedBy: " ")
+        line2.add(text: placemark.postalCode, separatedBy: " ")
+        line1.add(text: line2, separatedBy: "\n")
+        
+        return line1
+
+    }
+    
     
     
     // Denied locations services method

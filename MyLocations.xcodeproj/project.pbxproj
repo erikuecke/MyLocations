@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E03FA231F4B301300A3E8AB /* String+AddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03FA221F4B301300A3E8AB /* String+AddText.swift */; };
+		9E03FA261F4B3D3F00A3E8AB /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03FA251F4B3D3F00A3E8AB /* MyTabBarController.swift */; };
+		9E03FA281F4B3E4600A3E8AB /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03FA271F4B3E4600A3E8AB /* MyNavigationController.swift */; };
+		9E03FA2A1F4B3F2800A3E8AB /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E03FA291F4B3F2800A3E8AB /* MyImagePickerController.swift */; };
 		9E1842DF1F44A6EF0005675A /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1842DE1F44A6EF0005675A /* Functions.swift */; };
 		9E1842E21F44B5E70005675A /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1842E01F44B5E70005675A /* DataModel.xcdatamodeld */; };
 		9E1842E91F44B89D0005675A /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1842E71F44B89D0005675A /* Location+CoreDataClass.swift */; };
@@ -27,6 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9E03FA221F4B301300A3E8AB /* String+AddText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+AddText.swift"; sourceTree = "<group>"; };
+		9E03FA251F4B3D3F00A3E8AB /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		9E03FA271F4B3E4600A3E8AB /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		9E03FA291F4B3F2800A3E8AB /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
 		9E1842DE1F44A6EF0005675A /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		9E1842E11F44B5E70005675A /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		9E1842E71F44B89D0005675A /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Location+CoreDataClass.swift"; path = "../Location+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -60,12 +68,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E03FA241F4B3D2300A3E8AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9E03FA251F4B3D3F00A3E8AB /* MyTabBarController.swift */,
+				9E03FA271F4B3E4600A3E8AB /* MyNavigationController.swift */,
+				9E03FA291F4B3F2800A3E8AB /* MyImagePickerController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		9E1842ED1F44F1EB0005675A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9E03FA241F4B3D2300A3E8AB /* View */,
 				9E1842E01F44B5E70005675A /* DataModel.xcdatamodeld */,
 				9E1842E71F44B89D0005675A /* Location+CoreDataClass.swift */,
 				9E1842E81F44B89D0005675A /* Location+CoreDataProperties.swift */,
+				9E03FA221F4B301300A3E8AB /* String+AddText.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -205,7 +225,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E2F8DE41F4387B60060F9FB /* LocationsDetailsViewController.swift in Sources */,
+				9E03FA281F4B3E4600A3E8AB /* MyNavigationController.swift in Sources */,
 				9E1842E21F44B5E70005675A /* DataModel.xcdatamodeld in Sources */,
+				9E03FA2A1F4B3F2800A3E8AB /* MyImagePickerController.swift in Sources */,
 				9E2F8DE81F43AD680060F9FB /* HudView.swift in Sources */,
 				9E1842EC1F44F1B60005675A /* LocationsViewController.swift in Sources */,
 				9E1842EA1F44B89D0005675A /* Location+CoreDataProperties.swift in Sources */,
@@ -213,10 +235,12 @@
 				9E3903D71F479CE800B6389C /* UIImage+Resize.swift in Sources */,
 				9E1842EF1F4502E20005675A /* LocationCell.swift in Sources */,
 				9E1842DF1F44A6EF0005675A /* Functions.swift in Sources */,
+				9E03FA231F4B301300A3E8AB /* String+AddText.swift in Sources */,
 				9E423CE31F420B7C00C19BF9 /* AppDelegate.swift in Sources */,
 				9E1842E91F44B89D0005675A /* Location+CoreDataClass.swift in Sources */,
 				9E2F8DE61F43A2110060F9FB /* CategoryPickerViewController.swift in Sources */,
 				9E423CE51F420B7C00C19BF9 /* CurrentLocationViewController.swift in Sources */,
+				9E03FA261F4B3D3F00A3E8AB /* MyTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
